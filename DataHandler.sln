@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataHandler", "DataHandler\DataHandler.csproj", "{00F283D4-2B03-424D-8F7D-4F36A1A26776}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00F283D4-2B03-424D-8F7D-4F36A1A26776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00F283D4-2B03-424D-8F7D-4F36A1A26776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00F283D4-2B03-424D-8F7D-4F36A1A26776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00F283D4-2B03-424D-8F7D-4F36A1A26776}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9315D577-C5D5-447F-9182-A0FDFAE4267D}
+	EndGlobalSection
+EndGlobal

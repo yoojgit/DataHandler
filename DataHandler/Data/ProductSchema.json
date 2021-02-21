@@ -1,0 +1,70 @@
+[
+  {
+    "id": 1110,
+    "category": "Top",
+    "name": "Plain Shirt",
+    "color": "Pink",
+    "stock": 5,
+    "price": 150,
+    "productdetails": [
+      {
+        "description": "Shirt from ACS",
+        "imgurl": "https://"
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "category": "Outer",
+    "name": "C Tweed Coat",
+    "color": "Black",
+    "stock": 20,
+    "price": 3500,
+    "productdetails": [
+      {
+        "description": "Coat from C",
+        "imgurl": "https://"
+      }
+    ]
+  },
+  {
+    "id": 110,
+    "category": "Outer",
+    "name": "LV Jacket",
+    "color": "White",
+    "stock": 10,
+    "price": 3000,
+    "productdetails": [
+      {
+        "description": "Jacket from LV",
+        "imgurl": "https://"
+      }
+    ]
+  },
+  {
+    "id": 120,
+    "category": "Shoes",
+    "name": "G Stiletto Heel",
+    "color": "Blue",
+    "stock": 5,
+    "price": 2500,
+    "productdetails": [
+      {
+        "description": "Heel from G"
+      }
+    ]
+  },
+  {
+    "id": 121,
+    "category": "Shoes",
+    "name": "G Boots",
+    "color": "Green",
+    "stock": 2,
+    "price": 2500,
+    "productdetails": [
+      {
+        "imgurl": "https://"
+      }
+    ]
+  }
+]

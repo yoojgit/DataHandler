@@ -25,6 +25,7 @@ namespace DataHandler
             try
             {
                 comboBox1.Items.AddRange(XmlHandler.GetInstance().ListSchemaName.ToArray());
+                comboBox1.SelectedIndex = 0;
                 comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
                 ComboBox1_SelectedIndexChanged(comboBox1, null);
             }

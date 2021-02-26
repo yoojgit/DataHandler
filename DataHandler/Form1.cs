@@ -15,10 +15,7 @@ namespace DataHandler
             InitializeComponent();
             InitializeData();
         }
-
-        private const string jsonProductSchema = "ProductSchema.json";
-        private const string jsonCustomerSchema = "CustomerSchema.json";
-
+        
         private JsonHandler jsonHandler;
 
         private DataTable dtMain;
@@ -27,19 +24,25 @@ namespace DataHandler
         {
             try
             {
-                string[] arrComboItems = new string[2];
-                arrComboItems[0] = jsonProductSchema.ToString();
-                arrComboItems[1] = jsonCustomerSchema.ToString();
-
-                comboBox1.Items.AddRange(arrComboItems);
-                comboBox1.SelectedIndex = 0;
+                comboBox1.Items.AddRange(XmlHandler.GetInstance().ListSchemaName.ToArray());
                 comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
-
                 ComboBox1_SelectedIndexChanged(comboBox1, null);
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        private void btnExecute_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -49,18 +52,11 @@ namespace DataHandler
             {
                 if (sender is ComboBox comboBox)
                 {
-                    if (comboBox.SelectedIndex == 0)
-                    {
-                        jsonHandler = new JsonHandler(jsonProductSchema);
-                    }
-                    else
-                    {
-                        jsonHandler = new JsonHandler(jsonCustomerSchema);
-                    }
+                    jsonHandler = new JsonHandler();
 
-                    jsonHandler.GetDataTable += JsonHandler_GetDataTable; ;
-                    jsonHandler.GetJArray += JsonHandler_GetJArray; ;
-                    jsonHandler.InitializeData();
+                    jsonHandler.GetDataTable += JsonHandler_GetDataTable;
+                    jsonHandler.GetModelObject += JsonHandler_GetModelObject;
+                    jsonHandler.InitializeData(comboBox1.SelectedItem.ToString());
                 }
             }
             catch (Exception ex)
@@ -78,6 +74,9 @@ namespace DataHandler
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView1.AllowUserToAddRows = false;
                 dataGridView1.RowHeadersVisible = false;
+                dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+                dataGridView1.AllowUserToResizeRows = false;
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             }
             catch (Exception ex)
             {
@@ -85,21 +84,20 @@ namespace DataHandler
             }
         }
 
-        private JArray mJArray;
-
-        private void JsonHandler_GetJArray(JArray sender)
+        private List<JToken> JToken;
+        private void JsonHandler_GetModelObject(object sender)
         {
             try
             {
-                mJArray = sender;
+                JToken = sender as List<JToken>;
 
                 if (comboBox1.SelectedIndex == 0)
                 {
-                    ProductModel(ref mJArray);
+                    ProductModel(ref JToken);
                 }
                 else if (comboBox1.SelectedIndex == 1)
                 {
-                    CustomerModel(ref mJArray);
+                    CustomerModel(ref JToken);
                 }
                 //Console.WriteLine("☆" + sender.Count);
             }
@@ -109,13 +107,17 @@ namespace DataHandler
             }
         }
 
-        private void CustomerModel(ref JArray sender)
+        private void CustomerModel(ref List<JToken> sender)
         {
             try
             {
-                List<Customer> listCustomers = sender.ToObject<List<Customer>>();
+                List<Customer> listItems = new List<Customer>();
+                foreach (JToken item in sender)
+                {
+                    listItems.Add(item.ToObject<Customer>());
+                }
 
-                foreach (Customer customer in listCustomers)
+                foreach (Customer customer in listItems)
                 {
                     List<string> listOneRow = new List<string>();
                     listOneRow.Add(customer.Id.ToString());
@@ -130,13 +132,17 @@ namespace DataHandler
             }
         }
 
-        private void ProductModel(ref JArray sender)
+        private void ProductModel(ref List<JToken> sender)
         {
             try
             {
-                List<Product> listProducts = sender.ToObject<List<Product>>();
+                List<Product> listItems = new List<Product>();
+                foreach (JToken item in sender)
+                {
+                    listItems.Add(item.ToObject<Product>());
+                }
 
-                foreach (Product product in listProducts)
+                foreach (Product product in listItems)
                 {
                     List<string> listOneRow = new List<string>();
 
@@ -181,7 +187,6 @@ namespace DataHandler
             }
         }
 
-
         private void Form1_Load(object sender, EventArgs e)
         {
             try
@@ -192,6 +197,16 @@ namespace DataHandler
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            dataGridView1.AllowUserToAddRows = false; //enable last row 
+        }
+
+        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            dataGridView1.AllowUserToAddRows = false; //enable last row 
         }
     }
 }

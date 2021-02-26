@@ -25,6 +25,4 @@ namespace DataHandler.Models
 
         public string ImgUrl { get; set; }
     }
-
-
 }

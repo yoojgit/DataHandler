@@ -9,29 +9,33 @@ namespace DataHandler.Handlers
 {
     class JsonHandler
     {
+        public JsonHandler()
+        {
+        }
+
         public delegate void DataTableHandler(DataTable sender);
         public event DataTableHandler GetDataTable;
 
-        public delegate void JArrayHandler(JArray sender);
-        public event JArrayHandler GetJArray;
+        public delegate void ModelObjectHandler(object sender);
+        public event ModelObjectHandler GetModelObject;
 
         private string sJsonPath;
         private string sJsonRead;
-        private JArray arrJArray;
 
-        public JsonHandler(string jsonSchemaName)
+        private JObject jObject;
+
+        public void InitializeData(string jsonSchemaName)
         {
             sJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Data\", jsonSchemaName);
-        }
-
-        public void InitializeData()
-        {
             sJsonRead = File.ReadAllText(sJsonPath);
 
-            GetDataTable?.Invoke(CreateDataTable());
+            jTokens = JArray.Parse(sJsonRead).ToList();
 
-            GetJArray?.Invoke(arrJArray);
+            GetDataTable?.Invoke(CreateDataTable());
+            GetModelObject?.Invoke(jTokens);
         }
+
+        private List<JToken> jTokens;
 
         public DataTable CreateDataTable()
         {
@@ -39,9 +43,9 @@ namespace DataHandler.Handlers
             {
                 DataTable dtMain = new DataTable();
 
-                arrJArray = JArray.Parse(sJsonRead);
+                jObject = jTokens[0] as JObject;
                 List<JProperty> listProperties = new List<JProperty>();
-                listProperties = arrJArray.Children<JObject>().Take(1).Properties().ToList();
+                listProperties = jObject.Properties().ToList();
 
                 List<string> listColName = new List<string>();
 
@@ -52,15 +56,11 @@ namespace DataHandler.Handlers
                         foreach (JProperty subProp in prop.Value[0].ToList())
                         {
                             listColName.Add($"{prop.Name}({subProp.Name})");
-                            //Console.WriteLine($"{prop.Name}({subProp.Name})");
-                            //dtMain.Columns.Add(DataTableColumnGenerator(prop.Name, subProp.Name));
                         }
                     }
                     else
                     {
                         listColName.Add($"{prop.Name}");
-                        //Console.WriteLine(prop.Name);
-                        //dtMain.Columns.Add(DataTableColumnGenerator(prop.Name));
                     }
                 }
 
@@ -117,6 +117,9 @@ namespace DataHandler.Handlers
                 throw ex;
             }
         }
+
+
+
 
     }
 }

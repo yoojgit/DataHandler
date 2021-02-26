@@ -1,69 +1,69 @@
 [
   {
-    "id": 1110,
-    "category": "Top",
-    "name": "Plain Shirt",
-    "color": "Pink",
-    "stock": 5,
-    "price": 150,
-    "productdetails": [
+    "Id": 1110,
+    "Category": "Top",
+    "Name": "Plain Shirt",
+    "Color": "Pink",
+    "Stock": 5,
+    "Price": 150,
+    "ProductDetails": [
       {
-        "description": "Shirt from ACS",
-        "imgurl": "https://"
+        "Description": "Shirt from ACS",
+        "ImgUrl": "https://"
       }
     ]
   },
   {
-    "id": 100,
-    "category": "Outer",
-    "name": "C Tweed Coat",
-    "color": "Black",
-    "stock": 20,
-    "price": 3500,
-    "productdetails": [
+    "Id": 100,
+    "Category": "Outer",
+    "Name": "C Tweed Coat",
+    "Color": "Black",
+    "Stock": 20,
+    "Price": 3500,
+    "ProductDetails": [
       {
-        "description": "Coat from C",
-        "imgurl": "https://"
+        "Description": "Coat from C",
+        "ImgUrl": "https://"
       }
     ]
   },
   {
-    "id": 110,
-    "category": "Outer",
-    "name": "LV Jacket",
-    "color": "White",
-    "stock": 10,
-    "price": 3000,
-    "productdetails": [
+    "Id": 110,
+    "Category": "Outer",
+    "Name": "LV Jacket",
+    "Color": "White",
+    "Stock": 10,
+    "Price": 3000,
+    "ProductDetails": [
       {
-        "description": "Jacket from LV",
-        "imgurl": "https://"
+        "Description": "Jacket from LV",
+        "ImgUrl": "https://"
       }
     ]
   },
   {
-    "id": 120,
-    "category": "Shoes",
-    "name": "G Stiletto Heel",
-    "color": "Blue",
-    "stock": 5,
-    "price": 2500,
-    "productdetails": [
+    "Id": 120,
+    "Category": "Shoes",
+    "Name": "G Stiletto Heel",
+    "Color": "Blue",
+    "Stock": 5,
+    "Price": 2500,
+    "ProductDetails": [
       {
-        "description": "Heel from G"
+        "Description": "Heel from G"
       }
     ]
   },
   {
-    "id": 121,
-    "category": "Shoes",
-    "name": "G Boots",
-    "color": "Green",
-    "stock": 2,
-    "price": 2500,
-    "productdetails": [
+    "Id": 121,
+    "Category": "Shoes",
+    "Name": "G Boots",
+    "Color": "Green",
+    "Stock": 2,
+    "Price": 2500,
+    "ProductDetails": [
       {
-        "imgurl": "https://"
+        "ImgUrl": "https://"
       }
     ]
   }

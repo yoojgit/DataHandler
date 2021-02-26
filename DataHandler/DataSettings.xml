@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<schemas>
+	<file id="100">
+		<name>ProductSchema.json</name>
+	</file>
+	<file id="101">
+		<name>CustomerSchema.json</name>
+	</file>
+</schemas>
